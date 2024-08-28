@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import "./Form.scss"
 
-const Form = () => {
+const Form = ({ToDoArray, setToDoArray}) => {
 	const [text, setText] = useState("")
 
 	return (
-		<form onSubmit={(e) => {
+		<form className="FormBox" onSubmit={(e) => {
 			e.preventDefault()
-			//settodos(text)
-			
+			if(ToDoArray) {setToDoArray([...ToDoArray, {id:Date.now(), value:text}])}else {setToDoArray([{id:Date.now(), value:text}])} 
+			setText("")
 
 		}}>
 
